@@ -33,6 +33,8 @@ DBA task.
   exactly where you left off — no jumping back to page one.
 - **Remembered column choices** — the columns you show or hide are saved per
   table and per connection.
+- **Practical remote access** — TLS settings and SSH tunnels for PostgreSQL and
+  MySQL, including password and common private-key workflows.
 
 The result feels closer to working in a code editor than administering a
 database.
@@ -41,13 +43,14 @@ database.
 
 - **Connections** — saved connections with a fast start page; passwords stored in
   the macOS Keychain; multi-window workspaces; optional session restore;
-  tap-to-reconnect when a connection drops.
+  tap-to-reconnect when a connection drops; visible connection progress,
+  cancellation, and a configurable connect timeout.
 - **Browsing** — object browser for tables, views, indexes, and triggers with
   search; pagination-first browsing with per-table filters; native sorting,
   column resizing, and multi-row selection.
 - **SQL editor** — live syntax highlighting, schema-aware autocomplete,
   beautify/uglify formatting, run-all or run-current, per-connection query
-  history, and saved/favorite queries.
+  history, and saved/favorite queries with folders.
 - **Editing** — focused, transactional row editing (insert, update, delete,
   duplicate) with a Review Changes step that shows the exact SQL before it runs.
 - **Structure** — inline schema editing: add/rename/drop columns, edit
@@ -62,8 +65,8 @@ database.
 
 | Database     | Status                                            |
 | ------------ | ------------------------------------------------- |
-| PostgreSQL   | ✅ Browse, edit data, edit structure, manage users |
-| MySQL        | ✅ Browse, edit data, edit structure, manage users |
+| PostgreSQL   | ✅ Browse, edit data, edit structure, manage users, TLS/SSH |
+| MySQL        | ✅ Browse, edit data, edit structure, manage users, TLS/SSH |
 | SQLite       | ✅ Browse and edit (WAL-aware)                      |
 | OpenObserve  | ✅ Read-only stream browsing & queries              |
 
