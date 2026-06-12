@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Changelog — DevTables</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <meta name="description" content="DevTables release notes and version history — new features, improvements, and bug fixes across every version." />
+  <meta name="keywords" content="devtables release notes, changelog, version history, mac database client, postgresql, mysql, sqlite" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Changelog — DevTables" />
+  <meta property="og:description" content="Track new features, improvements, and bug fixes across every version of DevTables." />
+  <meta property="og:image" content="images/icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ─── Nav ─────────────────────────────────────────────────────────── -->
+  <header class="nav nav-static">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" aria-label="DevTables home">
+        <img src="images/icon.png" alt="" width="26" height="26" class="logo-img" />
+        <span>DevTables</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#keyboard">Keyboard</a>
+        <a href="index.html#databases">Databases</a>
+        <a href="index.html#editor">Editor</a>
+        <a href="index.html#features">Index</a>
+        <a href="release-notes.html">Changelog</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="index.html#download" class="nav-pill">
+          <span>Download</span>
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="nav-progress"></div>
+  </header>
+
+  <!-- ─── Page head ───────────────────────────────────────────────────── -->
+  <section class="page-head">
+    <div class="page-eyebrow">§ Changelog</div>
+    <h1 class="page-h">Released, <em>in the open.</em></h1>
+  </section>
+  <div class="page-sub">
+    <div></div>
+    <p>Every version of DevTables, in the order it shipped — new features, improvements, and fixes. Found something off? <a href="https://github.com/hengfeiyang/DevTables/issues" style="color:var(--accent);">Open an issue</a> and it lands here.</p>
+  </div>
+
+  <main class="page-body">
+    <div class="cl-list">
+
+      <!-- ── v1.0.1 ─────────────────────────────────────────────────── -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <span class="cl-version">v1.0.1</span>
+          <span>June 2026</span>
+          <span class="cl-tag">Latest</span>
+        </div>
+        <div class="cl-body">
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">SSH tunnels</p>
+            <h3>RSA keys, welcome aboard.</h3>
+            <p>SSH tunnels now accept RSA private keys alongside ed25519 and ECDSA — including the classic AWS-style <code>.pem</code> files. Authentication uses modern <code>rsa-sha2-256</code> / <code>rsa-sha2-512</code> signatures, so tunnels work with current OpenSSH servers that have retired the legacy <code>ssh-rsa</code> algorithm. Closes <a href="https://github.com/hengfeiyang/DevTables/issues/42">issue #42</a>.</p>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">MySQL</p>
+            <h3>Two paper cuts, gone.</h3>
+            <ul>
+              <li><strong>mysql_native_password support.</strong> The native-password authentication plugin now ships inside the app, so connecting to older servers — or newer ones with legacy accounts — works without any client-side setup.</li>
+              <li><strong>Correct default schema.</strong> Creating a table on MySQL now defaults to the database you're connected to instead of suggesting a schema that doesn't exist.</li>
+            </ul>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">OpenObserve</p>
+            <h3>Always fresh.</h3>
+            <p>Stream queries now always bypass the server-side result cache, so browsing an OpenObserve stream reflects the data as it is right now — not as it was a few minutes ago.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── v1.0.0 ─────────────────────────────────────────────────── -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <span class="cl-version">v1.0.0</span>
+          <span>Initial release</span>
+        </div>
+        <div class="cl-body">
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">The premise</p>
+            <h3>A database client that feels like your code editor.</h3>
+            <p>DevTables 1.0 is built around one idea: developers who live in PostgreSQL, MySQL, and SQLite every day shouldn't have to leave the keyboard to use their database tool. A command palette (<code>⇧⌘P</code>) runs every action by name, a quick-switcher (<code>⌘P</code>) jumps to any table by typing, and every shortcut is rebindable in Settings → Keymap.</p>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">Connections</p>
+            <ul>
+              <li><strong>Saved connections</strong> on a fast start page — open, edit, duplicate, delete, and test before saving. Passwords are stored in the macOS Keychain.</li>
+              <li><strong>TLS and SSH tunnels</strong> for PostgreSQL and MySQL, with password and private-key authentication.</li>
+              <li><strong>Multi-window workspaces</strong> — each window owns its session and tabs; all share the connection list.</li>
+              <li><strong>Resilient sessions</strong> — optional launch restore, visible connection progress with cancel, a configurable timeout, and tap-to-reconnect that keeps your tabs when a connection drops.</li>
+              <li><strong>SQLite, sandboxed properly</strong> — files (including WAL sidecars) reopen reliably after relaunch.</li>
+            </ul>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">Browsing</p>
+            <ul>
+              <li><strong>Object browser</strong> for tables, views, indexes, triggers, and schemas, with search.</li>
+              <li><strong>Instant table switching</strong> — open tables keep a live grid; page, sort, scroll, and selection are restored when you return.</li>
+              <li><strong>Pagination-first grids</strong> with a safe default row limit, per-table WHERE filters, native sorting, column resizing, and multi-row selection.</li>
+              <li><strong>Persistent views</strong> — column show/hide choices and filters are remembered per table, per connection.</li>
+            </ul>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">SQL editor</p>
+            <ul>
+              <li><strong>Schema-aware autocomplete</strong> — live table, view, and typed-column suggestions driven by the current statement, ranked above keywords.</li>
+              <li><strong>Run Current</strong> (<code>⌘↩</code>) and <strong>Run All</strong> (<code>⇧⌘↩</code>) with one result tab per statement and an execution log.</li>
+              <li><strong>Per-connection query history</strong> grouped Today / Yesterday / older, plus a <strong>saved-query library</strong> with folders and favorites.</li>
+              <li><strong>Beautify / uglify</strong> formatting that preserves <code>--</code> comments and statement boundaries.</li>
+            </ul>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">Editing &amp; structure</p>
+            <ul>
+              <li><strong>Transactional row editing</strong> — insert, update, duplicate, and delete staged as dirty cells and committed atomically with <code>⌘S</code>.</li>
+              <li><strong>Review Changes</strong> — the exact SQL a commit will run, shown before it runs.</li>
+              <li><strong>Inline schema editing</strong> — columns, types, nullability, defaults, comments, indexes, and foreign keys (PostgreSQL &amp; MySQL).</li>
+              <li><strong>Table and database management</strong> — create, rename, drop; truncate behind a guarded dialog.</li>
+              <li><strong>User management</strong> for PostgreSQL and MySQL with a compact permissions matrix.</li>
+            </ul>
+          </div>
+          <div class="cl-section">
+            <p class="cl-section-eyebrow">Import, export &amp; settings</p>
+            <ul>
+              <li><strong>CSV import</strong> with per-header mapping, preview, and validation warnings — cancellable, off the main thread.</li>
+              <li><strong>CSV / JSON export</strong> for tables and query results, streamed in pages with progress.</li>
+              <li><strong>Run .sql files</strong> directly in an editor tab; lightweight SQLite backup and restore.</li>
+              <li><strong>Settings</strong> — appearance and accent color, per-section fonts, per-token syntax colors with live preview, NULL/boolean display, destructive-query confirmation, and the full rebindable keymap.</li>
+              <li><strong>OpenObserve</strong> as a read-only source — streams browse like tables through the <code>_search</code> API.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">
+          <img src="images/icon.png" alt="" width="26" height="26" class="logo-img" />
+          <span>DevTables</span>
+        </a>
+        <p>A keyboard-first database client for macOS.<br />Built by a developer, used every day.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5>Product</h5>
+          <a href="index.html#keyboard">Keyboard</a>
+          <a href="index.html#databases">Databases</a>
+          <a href="index.html#editor">Editor</a>
+          <a href="index.html#download">Download</a>
+        </div>
+        <div>
+          <h5>Resources</h5>
+          <a href="release-notes.html">Changelog</a>
+          <a href="https://github.com/hengfeiyang/DevTables/issues">Support</a>
+          <a href="https://apps.apple.com/app/devutilities/id6753612551">DevUtilities — our other app</a>
+        </div>
+        <div>
+          <h5>Legal</h5>
+          <a href="privacy_policy.html">Privacy policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <span>© 2026 DevTables</span>
+      <span>v1.0.1</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — DevTables</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <meta name="description" content="Privacy Policy for DevTables — the app collects nothing. Your connections, queries, and data stay on your Mac." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ─── Nav ─────────────────────────────────────────────────────────── -->
+  <header class="nav nav-static">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" aria-label="DevTables home">
+        <img src="images/icon.png" alt="" width="26" height="26" class="logo-img" />
+        <span>DevTables</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#keyboard">Keyboard</a>
+        <a href="index.html#databases">Databases</a>
+        <a href="index.html#editor">Editor</a>
+        <a href="index.html#features">Index</a>
+        <a href="release-notes.html">Changelog</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="index.html#download" class="nav-pill">
+          <span>Download</span>
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="nav-progress"></div>
+  </header>
+
+  <!-- ─── Page head ───────────────────────────────────────────────────── -->
+  <section class="page-head">
+    <div class="page-eyebrow">§ Privacy</div>
+    <h1 class="page-h">Your data <em>stays</em> on your Mac.</h1>
+  </section>
+  <div class="page-sub">
+    <div></div>
+    <p>DevTables collects nothing. No analytics, no telemetry, no accounts, no tracking. The only network connections the app ever makes are the ones you configure yourself — to your own databases.</p>
+  </div>
+
+  <main class="page-body">
+    <div class="prose">
+
+      <!-- ── Sticky TOC ──────────────────────────────────────────── -->
+      <aside class="prose-aside" aria-label="On this page">
+        <span class="aside-h">Last updated</span>
+        <span style="color:var(--ink); text-transform:none; font-family:var(--serif); font-style:italic; font-size:18px; letter-spacing:-0.01em;">June 2026</span>
+        <span class="aside-h" style="margin-top:18px;">On this page</span>
+        <a href="#overview">Overview</a>
+        <a href="#collection">What we collect</a>
+        <a href="#local">What stays local</a>
+        <a href="#network">Network connections</a>
+        <a href="#security">Data security</a>
+        <a href="#third">Third-party services</a>
+        <a href="#children">Children's privacy</a>
+        <a href="#rights">Your rights</a>
+        <a href="#changes">Changes</a>
+        <a href="#contact">Contact</a>
+      </aside>
+
+      <!-- ── Body ────────────────────────────────────────────────── -->
+      <div class="prose-content">
+
+        <h2 id="overview">Overview</h2>
+        <p>DevTables ("the App") is a native macOS database client created by Hengfei Yang. It connects to databases you choose — PostgreSQL, MySQL, SQLite files, and OpenObserve — so you can browse, query, and edit your own data. This policy explains how the App handles information. The short version: it doesn't take any.</p>
+
+        <h2 id="collection">What we collect</h2>
+        <div class="prose-callout">
+          <p><strong>Nothing.</strong> DevTables contains no analytics, no telemetry, no crash reporters, and no tracking of any kind. The App has no account system and never sends anything about you, your machine, or your usage to us or to anyone else.</p>
+        </div>
+        <p>We do not collect:</p>
+        <ul>
+          <li>No personal information (name, email, identifiers).</li>
+          <li>No usage events, feature analytics, or session data.</li>
+          <li>No database contents, schemas, queries, or query results.</li>
+          <li>No connection details, credentials, or keys.</li>
+          <li>No IP addresses or location data.</li>
+        </ul>
+
+        <h2 id="local">What stays local</h2>
+        <p>Everything the App remembers, it remembers <strong>on your device only</strong>:</p>
+        <ul>
+          <li><strong>Saved connections.</strong> Hosts, ports, usernames, and database names are stored in the App's local container.</li>
+          <li><strong>Passwords and passphrases.</strong> Database passwords are stored in the <strong>macOS Keychain</strong>, protected by the system — never in plain-text files.</li>
+          <li><strong>SSH keys.</strong> When a tunnel uses a private key, the App reads the key file you select; it is used for authentication and is not copied elsewhere or transmitted to anyone but the SSH server you configured.</li>
+          <li><strong>Query history and saved queries.</strong> Stored locally, per connection, so your library is yours alone.</li>
+          <li><strong>View preferences.</strong> Column choices, filters, fonts, colors, and keybindings live in local app storage.</li>
+          <li><strong>SQLite bookmarks.</strong> The App keeps security-scoped bookmarks so your database files reopen after a relaunch — a sandbox mechanism that grants the App access only to files and folders you explicitly chose.</li>
+        </ul>
+        <p>Deleting the App (and its container) removes all of this. Keychain items can be removed with Keychain Access.</p>
+
+        <h2 id="network">Network connections</h2>
+        <p>DevTables makes network connections <strong>only to servers you configure</strong>:</p>
+        <ul>
+          <li><strong>PostgreSQL and MySQL servers</strong> you add — directly, over TLS, or through an SSH tunnel to the bastion host you specify.</li>
+          <li><strong>OpenObserve instances</strong> you add, over HTTP(S) using the credentials you provide.</li>
+        </ul>
+        <p>Your queries and their results travel between your Mac and your database server — never through any server of ours. There is no intermediary, no proxy, and no "cloud sync". SQLite databases are local files and involve no network at all.</p>
+        <p>The App performs no update checks or other background phone-home requests; updates are delivered through the Mac App Store.</p>
+
+        <h2 id="security">Data security</h2>
+        <ul>
+          <li><strong>App Sandbox.</strong> DevTables runs sandboxed; it can only reach files and folders you explicitly open or grant.</li>
+          <li><strong>Keychain.</strong> Credentials are stored in the macOS Keychain, encrypted by the system.</li>
+          <li><strong>Encrypted transport.</strong> TLS for PostgreSQL/MySQL and SSH tunnels with modern key algorithms (ed25519, ECDSA, RSA with rsa-sha2 signatures) are supported for remote connections.</li>
+        </ul>
+        <p>Keep in mind that the security of a database connection also depends on how your server is configured; we recommend TLS or an SSH tunnel for anything that crosses the open internet.</p>
+
+        <h2 id="third">Third-party services</h2>
+        <p>The App embeds no third-party analytics, advertising, or tracking SDKs. If you obtained DevTables through the Mac App Store, Apple may provide aggregate, opt-in statistics (such as crash reports) to us under <a href="https://www.apple.com/legal/privacy/">Apple's own privacy policy</a>; that data collection is controlled by your macOS settings, not by the App.</p>
+
+        <h2 id="children">Children's privacy</h2>
+        <p>DevTables is a professional developer tool and is not directed at children. Since the App collects no data from anyone, it collects no data from children either.</p>
+
+        <h2 id="rights">Your rights</h2>
+        <p>Privacy regulations such as GDPR and CCPA grant rights over personal data a company holds about you. DevTables holds none — there is nothing for us to access, correct, export, or delete. Your data lives on your Mac and on database servers under your control.</p>
+
+        <h2 id="changes">Changes to this policy</h2>
+        <p>If a future version of the App ever changes how it handles data, this page will be updated and the change will be called out in the <a href="release-notes.html">release notes</a> before it ships. The "Last updated" date above always reflects the current revision.</p>
+
+        <h2 id="contact">Contact</h2>
+        <p>Questions about privacy — or anything else? <a href="https://github.com/hengfeiyang/DevTables/issues">Open an issue on GitHub</a> and we'll respond there.</p>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">
+          <img src="images/icon.png" alt="" width="26" height="26" class="logo-img" />
+          <span>DevTables</span>
+        </a>
+        <p>A keyboard-first database client for macOS.<br />Built by a developer, used every day.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5>Product</h5>
+          <a href="index.html#keyboard">Keyboard</a>
+          <a href="index.html#databases">Databases</a>
+          <a href="index.html#editor">Editor</a>
+          <a href="index.html#download">Download</a>
+        </div>
+        <div>
+          <h5>Resources</h5>
+          <a href="release-notes.html">Changelog</a>
+          <a href="https://github.com/hengfeiyang/DevTables/issues">Support</a>
+          <a href="https://apps.apple.com/app/devutilities/id6753612551">DevUtilities — our other app</a>
+        </div>
+        <div>
+          <h5>Legal</h5>
+          <a href="privacy_policy.html">Privacy policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <span>© 2026 DevTables</span>
+      <span>v1.0.1</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

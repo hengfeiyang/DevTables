@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevTables — a keyboard-first Mac database client for Postgres, MySQL &amp; SQLite</title>
+  <meta name="description" content="DevTables is a native macOS database client that feels like your code editor — command palette, table quick-switcher, schema-aware SQL autocomplete. PostgreSQL, MySQL, SQLite, and read-only OpenObserve." />
+  <meta name="keywords" content="mac database client, postgresql gui macos, mysql gui mac, sqlite browser mac, database tool, keyboard-first, command palette, sql editor, ssh tunnel, native macOS app" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:title" content="DevTables — a keyboard-first Mac database client" />
+  <meta property="og:description" content="Postgres, MySQL, SQLite — at the speed of your editor. Command palette, quick-switcher, schema-aware autocomplete. Native macOS." />
+  <meta property="og:image" content="images/icon.png" />
+
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:title" content="DevTables — a keyboard-first Mac database client" />
+  <meta property="twitter:description" content="Postgres, MySQL, SQLite — at the speed of your editor. Native macOS, zero telemetry." />
+  <meta property="twitter:image" content="images/icon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DevTables",
+    "description": "DevTables is a native macOS database client for keyboard-driven developers working with PostgreSQL, MySQL, and SQLite. Command palette, table quick-switcher, schema-aware SQL autocomplete, transactional editing with SQL preview, SSH tunnels and TLS, CSV/JSON import and export.",
+    "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "Developer Tools",
+    "operatingSystem": "macOS",
+    "softwareVersion": "1.0.1",
+    "author": { "@type": "Person", "name": "Hengfei Yang" },
+    "requirements": "macOS 15.0 or later",
+    "inLanguage": "en-US"
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ─── Nav ─────────────────────────────────────────────────────────── -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" aria-label="DevTables home">
+        <img src="images/icon.png" alt="" width="26" height="26" class="logo-img" />
+        <span>DevTables</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#keyboard">Keyboard</a>
+        <a href="#databases">Databases</a>
+        <a href="#editor">Editor</a>
+        <a href="#features">Index</a>
+        <a href="release-notes.html">Changelog</a>
+      </nav>
+      <div class="nav-cta">
+        <button type="button" class="nav-kbd" data-palette-open title="Open the command palette demo">
+          <span>Palette</span>
+          <span class="kbd">⇧⌘P</span>
+        </button>
+        <a href="#download" class="nav-pill">
+          <span>Download</span>
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="nav-progress"></div>
+  </header>
+
+  <main>
+    <!-- ─── Hero ──────────────────────────────────────────────────────── -->
+    <section class="hero" id="top">
+      <div class="hero-meta">
+        <span class="meta-dot"></span>
+        <span>Version 1.0 — coming soon to the Mac App Store</span>
+      </div>
+      <h1 class="hero-h">
+        Postgres, MySQL,<br />
+        SQLite — <em>at the speed</em><br />
+        of your editor.
+      </h1>
+      <div class="hero-sub">
+        <p>
+          DevTables is a native Mac database client built for developers who live
+          on the keyboard. A command palette runs any action by name, ⌘P jumps to
+          any table the way you'd open a file, and autocomplete already knows your
+          schema. No tree-clicking. No page-one resets. No telemetry.
+        </p>
+        <div class="hero-rot" aria-live="polite">
+          <span class="rot-label">Muscle memory:</span>
+          <span class="rot-value">⇧⌘P — anything.</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path d="M16.4 2.6a3.7 3.7 0 0 1-.9 2.7 3 3 0 0 1-2.4 1.1 3.4 3.4 0 0 1 .9-2.6 3.7 3.7 0 0 1 2.4-1.2zM19 17.4a8.4 8.4 0 0 1-.8 1.6c-.5.7-.9 1.2-1.2 1.5a2.4 2.4 0 0 1-1.8.8 4.4 4.4 0 0 1-1.7-.4 4.7 4.7 0 0 0-1.8-.4 4.9 4.9 0 0 0-1.8.4 4.6 4.6 0 0 1-1.6.4 2.3 2.3 0 0 1-1.8-.8c-.3-.3-.7-.8-1.3-1.5a8.7 8.7 0 0 1-1.4-2.7A9.5 9.5 0 0 1 3 13a5.6 5.6 0 0 1 .7-2.9 4.3 4.3 0 0 1 1.6-1.6A4.3 4.3 0 0 1 7.5 8a5.5 5.5 0 0 1 1.9.5 4.5 4.5 0 0 0 1.5.5 9.4 9.4 0 0 0 1.7-.6 5.7 5.7 0 0 1 2.3-.4 4.6 4.6 0 0 1 3.6 1.9 4 4 0 0 0-2.1 3.6 4 4 0 0 0 1.3 3 4.4 4.4 0 0 0 1.3.9z" fill="currentColor" />
+          </svg>
+          Get DevTables for macOS
+        </a>
+        <button type="button" class="btn-ghost" data-palette-open>
+          Try the palette
+          <span class="kbd">⇧⌘P</span>
+        </button>
+      </div>
+      <div class="hero-foot">
+        <div><span class="foot-num">3 + 1</span><span class="foot-lbl">Postgres, MySQL, SQLite — plus read-only OpenObserve</span></div>
+        <div><span class="foot-num">⇧⌘P</span><span class="foot-lbl">every action, by name — every key rebindable</span></div>
+        <div><span class="foot-num">macOS 15+</span><span class="foot-lbl">native SwiftUI, Keychain-backed secrets</span></div>
+        <div><span class="foot-num">Zero</span><span class="foot-lbl">telemetry — your queries never leave your Mac</span></div>
+      </div>
+    </section>
+
+    <!-- ─── App window mock + live palette ────────────────────────────── -->
+    <div class="stage reveal">
+      <div class="appwin" role="img" aria-label="The DevTables window: a sidebar of tables, a paginated data grid, and the command palette open on top.">
+        <div class="aw-titlebar">
+          <div class="aw-lights"><span></span><span></span><span></span></div>
+          <div class="aw-title"><strong>orders</strong> — production · postgres</div>
+          <div class="aw-conn">PostgreSQL 16</div>
+        </div>
+        <div class="aw-body">
+          <aside class="aw-side">
+            <div class="aw-side-h">Tables · 12</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>customers</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>invoices</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>line_items</div>
+            <div class="aw-tbl on"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>orders</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>payments</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>products</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>sessions</div>
+            <div class="aw-tbl"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor"/><path d="M1 4.5h10M5 4.5v6" stroke="currentColor"/></svg>users</div>
+          </aside>
+          <div class="aw-main">
+            <div class="aw-tabs">
+              <span class="aw-tab on">orders</span>
+              <span class="aw-tab">customers</span>
+              <span class="aw-tab">SQL — revenue.sql</span>
+            </div>
+            <div class="aw-grid">
+              <table>
+                <thead>
+                  <tr><th>id</th><th>customer</th><th>status</th><th class="aw-hide-2">total</th><th class="aw-hide-1">created_at</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="num">10422</td><td>Acme Corp</td><td>shipped</td><td class="aw-hide-2 num">412.50</td><td class="aw-hide-1">2026-06-09 14:02:11</td></tr>
+                  <tr><td class="num">10423</td><td>Northwind Ltd</td><td>pending</td><td class="aw-hide-2 num">89.00</td><td class="aw-hide-1">2026-06-09 14:48:37</td></tr>
+                  <tr class="sel"><td class="num">10424</td><td>Initech</td><td>paid</td><td class="aw-hide-2 num">1,240.00</td><td class="aw-hide-1">2026-06-09 15:11:04</td></tr>
+                  <tr><td class="num">10425</td><td>Globex</td><td>paid</td><td class="aw-hide-2 num">560.75</td><td class="aw-hide-1">2026-06-10 09:23:58</td></tr>
+                  <tr><td class="num">10426</td><td>Stark Industries</td><td>refunded</td><td class="aw-hide-2 num">75.00</td><td class="aw-hide-1">2026-06-10 11:40:12</td></tr>
+                  <tr><td class="num">10427</td><td>Wayne Enterprises</td><td>pending</td><td class="aw-hide-2 null">NULL</td><td class="aw-hide-1">2026-06-11 08:05:46</td></tr>
+                  <tr><td class="num">10428</td><td>Tyrell Corp</td><td>shipped</td><td class="aw-hide-2 num">310.20</td><td class="aw-hide-1">2026-06-11 16:54:21</td></tr>
+                  <tr><td class="num">10429</td><td>Hooli</td><td>paid</td><td class="aw-hide-2 num">2,180.00</td><td class="aw-hide-1">2026-06-12 07:31:09</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="aw-status">
+              <span>SELECT · 25 rows · 12 ms</span>
+              <span>page 3 / 418 — sorted by created_at ↓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live command palette demo -->
+        <div class="palette" id="palette">
+          <div class="pal-input">
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <path d="M5 2.5h-1A1.5 1.5 0 0 0 2.5 4v1M11 2.5h1A1.5 1.5 0 0 1 13.5 4v1M5 13.5h-1A1.5 1.5 0 0 1 2.5 12v-1M11 13.5h1a1.5 1.5 0 0 0 1.5-1.5v-1" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round" />
+            </svg>
+            <input type="text" placeholder="Type an action — try &quot;table&quot;, &quot;run&quot;, &quot;export&quot;…" aria-label="Command palette demo — filter actions" />
+            <span class="kbd">⇧⌘P</span>
+          </div>
+          <div class="pal-list" role="listbox"></div>
+          <div class="pal-foot">
+            <span><b>↑↓</b> navigate</span>
+            <span><b>↩</b> jump to the matching section</span>
+            <span><b>esc</b> dismiss</span>
+          </div>
+        </div>
+      </div>
+      <p class="stage-hint">This window is drawn in HTML — but the palette works. Press <span class="kbd">⇧⌘P</span> and type.</p>
+    </div>
+
+    <!-- ─── § 01 — Keyboard ───────────────────────────────────────────── -->
+    <section class="section" id="keyboard">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">§ 01 — The keyboard</div>
+        <h2 class="section-h">
+          Hands on the keys,<br />
+          <span class="muted">never on the tree.</span>
+        </h2>
+      </div>
+      <div class="caps reveal">
+        <div class="cap">
+          <span class="cap-n">i</span>
+          <div class="cap-body">
+            <h4>Command palette <span class="kbd">⇧⌘P</span></h4>
+            <p>Every action in the app, run by name. Connect, query, export, truncate — type a few letters instead of hunting through menus.</p>
+          </div>
+        </div>
+        <div class="cap">
+          <span class="cap-n">ii</span>
+          <div class="cap-body">
+            <h4>Go to Table <span class="kbd">⌘P</span></h4>
+            <p>Jump to any table by typing its name — exactly the way you open a file in your editor. The sidebar becomes optional.</p>
+          </div>
+        </div>
+        <div class="cap">
+          <span class="cap-n">iii</span>
+          <div class="cap-body">
+            <h4>Schema-aware autocomplete</h4>
+            <p>Live table, view, and column suggestions driven by the tables in your current statement — with column types shown inline.</p>
+          </div>
+        </div>
+        <div class="cap">
+          <span class="cap-n">iv</span>
+          <div class="cap-body">
+            <h4>State-preserving switching</h4>
+            <p>Each open table keeps a live grid. Flip between tables and land exactly where you left off — scroll, page, sort, and selected row intact.</p>
+          </div>
+        </div>
+        <div class="cap">
+          <span class="cap-n">v</span>
+          <div class="cap-body">
+            <h4>Your columns, remembered</h4>
+            <p>The columns you show or hide — and the <code>WHERE</code> filters you set — are saved per table and per connection. Reopen a table, get your view back.</p>
+          </div>
+        </div>
+        <div class="cap">
+          <span class="cap-n">vi</span>
+          <div class="cap-body">
+            <h4>Every key, rebindable</h4>
+            <p>The defaults below are just defaults. Settings → Keymap rebinds every common navigation, grid, and SQL action.</p>
+          </div>
+        </div>
+      </div>
+      <div class="keys reveal" aria-label="Default keyboard shortcuts">
+        <span class="key-pair"><span class="kbd">⇧⌘P</span> palette</span>
+        <span class="key-pair"><span class="kbd">⌘P</span> go to table</span>
+        <span class="key-pair"><span class="kbd">⌘K</span> switch connection</span>
+        <span class="key-pair"><span class="kbd">⇧⌘K</span> switch database</span>
+        <span class="key-pair"><span class="kbd">⌘T</span> new SQL tab</span>
+        <span class="key-pair"><span class="kbd">⌘↩</span> run current</span>
+        <span class="key-pair"><span class="kbd">⇧⌘↩</span> run all</span>
+        <span class="key-pair"><span class="kbd">⌘S</span> commit changes</span>
+        <span class="key-pair"><span class="kbd">⇧⌘S</span> save query</span>
+        <span class="key-pair"><span class="kbd">⌘R</span> refresh</span>
+        <span class="key-pair"><span class="kbd">⌘/</span> comment</span>
+        <span class="key-pair"><span class="kbd">⌘]</span> next tab</span>
+      </div>
+    </section>
+
+    <!-- ─── § 02 — Databases ──────────────────────────────────────────── -->
+    <section class="section" id="databases">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">§ 02 — The engines</div>
+        <h2 class="section-h">
+          Three engines, <em>done properly.</em><br />
+          <span class="muted">Plus one for your logs.</span>
+        </h2>
+      </div>
+      <div class="dbm-wrap reveal">
+        <table class="dbm">
+          <thead>
+            <tr>
+              <th>Engine</th>
+              <th>Browse</th>
+              <th>Edit data</th>
+              <th>Structure</th>
+              <th>Users</th>
+              <th>TLS · SSH</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="dbm-engine">PostgreSQL<small>via libpq</small></span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Both</span></td>
+              <td class="dbm-note">Full structure editing including foreign keys; create databases.</td>
+            </tr>
+            <tr>
+              <td><span class="dbm-engine">MySQL<small>via libmysqlclient</small></span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Both</span></td>
+              <td class="dbm-note">Native and mysql_native_password auth, both supported out of the box.</td>
+            </tr>
+            <tr>
+              <td><span class="dbm-engine">SQLite<small>local files</small></span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-yes">Yes</span></td>
+              <td><span class="dbm-part">Partial¹</span></td>
+              <td><span class="dbm-no">—</span></td>
+              <td><span class="dbm-no">—</span></td>
+              <td class="dbm-note">WAL-aware, sandbox-friendly; files reopen reliably after relaunch.</td>
+            </tr>
+            <tr>
+              <td><span class="dbm-engine">OpenObserve<small>via _search api</small></span></td>
+              <td><span class="dbm-yes">Read-only</span></td>
+              <td><span class="dbm-no">—</span></td>
+              <td><span class="dbm-no">—</span></td>
+              <td><span class="dbm-no">—</span></td>
+              <td><span class="dbm-part">HTTPS</span></td>
+              <td class="dbm-note">Streams appear as tables; time-window queries on <code style="font-family:var(--mono);font-size:0.95em;">_timestamp</code> run fast.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dbm-foot reveal">
+        ¹ SQLite supports add / rename / drop column and create / drop index. In-place type, nullability,
+        default, and foreign-key changes are deliberately blocked — SQLite can't do them without silently
+        rebuilding your table, and DevTables won't do that behind your back.<br /><br />
+        <strong>On the radar — later, not today:</strong> SQL Server, MongoDB, and Redis. The current
+        priority is depth and polish on the three core engines, not breadth.
+      </p>
+    </section>
+
+    <!-- ─── § 03 — SQL editor ─────────────────────────────────────────── -->
+    <section class="section" id="editor">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">§ 03 — The editor</div>
+        <h2 class="section-h">
+          A SQL editor that <em>knows</em><br />
+          <span class="muted">your schema by heart.</span>
+        </h2>
+      </div>
+      <div class="spotlight-grid reveal">
+        <div class="editor-mock" role="img" aria-label="The DevTables SQL editor with schema-aware autocomplete suggesting typed columns.">
+          <div class="em-bar">
+            <span>SQL — revenue.sql</span>
+            <span class="em-bar-spacer"></span>
+            <span>Beautify</span>
+            <span class="em-run">Run <span class="kbd">⌘↩</span></span>
+          </div>
+          <pre class="em-code"><span class="ln"><span class="sc">-- top customers by revenue, last 30 days</span></span><span class="ln"><span class="sk">SELECT</span> c.name, c.country,</span><span class="ln">       <span class="sf">sum</span>(o.total) <span class="sk">AS</span> revenue</span><span class="ln"><span class="sk">FROM</span> orders o</span><span class="ln"><span class="sk">JOIN</span> customers c <span class="sk">ON</span> c.id = o.customer_id</span><span class="ln"><span class="sk">WHERE</span> o.created_at &gt; <span class="sf">now</span>() - <span class="sk">interval</span> <span class="ss">'30 days'</span></span><span class="ln"><span class="sk">GROUP BY</span> c.name, c.country</span><span class="ln"><span class="sk">ORDER BY</span> revenue <span class="sk">DESC</span> <span class="sk">LIMIT</span> <span class="sn">25</span>;</span><span class="ln"></span><span class="ln"><span class="sk">SELECT</span> id, status, total <span class="sk">FROM</span> orders <span class="sk">WHERE</span> c<span class="caret"></span></span></pre>
+          <div class="ac-pop" aria-hidden="true">
+            <div class="ac-row on"><span class="ac-kind">c</span><b>c</b>ustomer_id<span class="ac-type">bigint</span></div>
+            <div class="ac-row"><span class="ac-kind">c</span><b>c</b>reated_at<span class="ac-type">timestamptz</span></div>
+            <div class="ac-row"><span class="ac-kind">c</span><b>c</b>urrency<span class="ac-type">text</span></div>
+            <div class="ac-row"><span class="ac-kind t">t</span><b>c</b>ustomers<span class="ac-type">table</span></div>
+            <div class="ac-foot">columns from “orders” — ranked above keywords</div>
+          </div>
+        </div>
+        <div class="spotlight-notes">
+          <div class="note">
+            <span class="note-mark">i</span>
+            <div class="note-body">
+              <h4>Autocomplete that reads your statement</h4>
+              <p>Columns are preloaded from the tables referenced in the query you're writing, shown with their types, and ranked ahead of keywords.</p>
+            </div>
+          </div>
+          <div class="note">
+            <span class="note-mark">ii</span>
+            <div class="note-body">
+              <h4>History that files itself</h4>
+              <p>Every statement is kept per connection, grouped Today / Yesterday / older. Yesterday's one-off query is one click away.</p>
+            </div>
+          </div>
+          <div class="note">
+            <span class="note-mark">iii</span>
+            <div class="note-body">
+              <h4>A query library <span class="kbd">⇧⌘S</span></h4>
+              <p>Save queries with names, organize them into folders, favorite the ones you reach for weekly.</p>
+            </div>
+          </div>
+          <div class="note">
+            <span class="note-mark">iv</span>
+            <div class="note-body">
+              <h4>Run exactly what you mean</h4>
+              <p><span class="kbd">⌘↩</span> runs the current statement or selection; <span class="kbd">⇧⌘↩</span> runs everything, one result tab per statement. Beautify keeps your <code style="font-family:var(--mono);font-size:0.85em;">--</code> comments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── § 04 — Safety ─────────────────────────────────────────────── -->
+    <section class="section" id="safety">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">§ 04 — The safety net</div>
+        <h2 class="section-h">
+          See the SQL <em>before</em> it runs.<br />
+          <span class="muted">Staged edits, one transaction, zero surprises.</span>
+        </h2>
+      </div>
+      <div class="spotlight-grid flip reveal">
+        <div class="spotlight-notes">
+          <div class="note">
+            <span class="note-mark">i</span>
+            <div class="note-body">
+              <h4>Staged, not fired</h4>
+              <p>Edited cells, new rows, and deletions are held as a visible set of pending changes — nothing touches the database until you commit.</p>
+            </div>
+          </div>
+          <div class="note">
+            <span class="note-mark">ii</span>
+            <div class="note-body">
+              <h4>The exact SQL, shown first</h4>
+              <p>Review Changes lists every statement a commit will run — for data edits and for schema edits alike. What you read is what executes.</p>
+            </div>
+          </div>
+          <div class="note">
+            <span class="note-mark">iii</span>
+            <div class="note-body">
+              <h4>One transaction <span class="kbd">⌘S</span></h4>
+              <p>The whole change set commits atomically. If one statement fails, none of them stick.</p>
+            </div>
+          </div>
+          <div class="note">
+            <span class="note-mark">iv</span>
+            <div class="note-body">
+              <h4>Guard rails everywhere</h4>
+              <p>Destructive queries ask first. Truncate sits behind a deliberate dialog. And a real <code style="font-family:var(--mono);font-size:0.85em;">NULL</code> never blurs with the string <code style="font-family:var(--mono);font-size:0.85em;">"NULL"</code>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="review-mock" role="img" aria-label="The Review Changes sheet listing the exact SQL statements a commit will run.">
+          <div class="rv-head">
+            <h4>Review Changes</h4>
+            <span class="rv-count">3 statements · orders</span>
+          </div>
+          <pre class="rv-sql"><span class="ln"><span class="sk">BEGIN</span>;</span><span class="ln"><span class="sk">UPDATE</span> "orders" <span class="sk">SET</span> "status" = <span class="ss">'shipped'</span> <span class="sk">WHERE</span> "id" = <span class="sn">10423</span>;</span><span class="ln"><span class="sk">UPDATE</span> "orders" <span class="sk">SET</span> "total" = <span class="sn">129.00</span> <span class="sk">WHERE</span> "id" = <span class="sn">10427</span>;</span><span class="ln del"><span class="sk">DELETE FROM</span> "orders" <span class="sk">WHERE</span> "id" = <span class="sn">10426</span>;</span><span class="ln"><span class="sk">COMMIT</span>;</span></pre>
+          <div class="rv-actions">
+            <span class="rv-btn">Cancel</span>
+            <span class="rv-btn primary">Commit <span class="kbd">⌘S</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── § 05 — Feature index ──────────────────────────────────────── -->
+    <section class="section" id="features">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">§ 05 — The index</div>
+        <h2 class="section-h">
+          Everything else,<br />
+          <span class="muted">listed plainly.</span>
+        </h2>
+      </div>
+      <div class="tools-controls reveal">
+        <div class="search">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" />
+            <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+          <input id="features-search" type="text" placeholder='Search the index — try "ssh", "csv", "keymap"…' />
+          <button id="features-search-clear" class="search-clear" aria-label="Clear">✕</button>
+        </div>
+        <div class="cats" id="features-cats"></div>
+      </div>
+      <div class="tools-grid reveal" id="features-grid"></div>
+    </section>
+
+    <!-- ─── § 06 — Changelog (condensed) ──────────────────────────────── -->
+    <section class="section" id="changelog">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">§ 06 — Changelog</div>
+        <h2 class="section-h">
+          Released, in the open.<br />
+          <span class="muted">Recent versions, in the order they shipped.</span>
+        </h2>
+      </div>
+      <ol class="changes reveal">
+        <li>
+          <span class="ver">1.0.1</span>
+          <div>
+            <h4>Connectivity, hardened</h4>
+            <p>SSH tunnels accept RSA private keys (AWS-style .pem included) via rsa-sha2 signatures. MySQL connects to servers still on mysql_native_password. New MySQL tables default to the current database, and OpenObserve queries always fetch fresh results.</p>
+            <span class="when">June 2026</span>
+          </div>
+        </li>
+        <li>
+          <span class="ver">1.0</span>
+          <div>
+            <h4>The first release</h4>
+            <p>Connections, instant table browsing, a schema-aware SQL editor, transactional data and structure editing with Review Changes, user management, CSV/JSON import and export, TLS and SSH tunnels — and the command palette holding it all together.</p>
+            <span class="when">Initial release</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ─── § 07 — Download ───────────────────────────────────────────── -->
+    <section class="section" id="download">
+      <div class="dl-card reveal">
+        <div class="dl-left">
+          <div class="section-eyebrow">§ 07 — Download</div>
+          <h2 class="dl-h">
+            Be first<br />
+            <em>in line.</em>
+          </h2>
+          <p class="dl-p">
+            DevTables 1.0 is being prepared for the Mac App Store. Watch the GitHub
+            repository to be notified the moment it ships — and shape what 1.x becomes
+            by filing issues and feature requests today.
+          </p>
+          <div class="dl-actions">
+            <!-- At launch: swap this for the App Store button, e.g.
+            <a href="https://apps.apple.com/app/devtables/idXXXXXXXXXX" class="btn-primary lg">Download — Mac App Store</a>
+            -->
+            <a href="https://github.com/hengfeiyang/DevTables" class="btn-primary lg">
+              <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+                <path d="M8 .8a7.2 7.2 0 0 0-2.28 14.03c.36.07.5-.16.5-.35v-1.21c-2 .43-2.43-.97-2.43-.97-.33-.83-.8-1.05-.8-1.05-.66-.45.05-.44.05-.44.72.05 1.1.75 1.1.75.65 1.1 1.7.79 2.1.6.07-.46.26-.78.46-.96-1.6-.18-3.28-.8-3.28-3.56 0-.78.28-1.43.74-1.93-.07-.18-.32-.92.07-1.91 0 0 .6-.2 1.98.74a6.9 6.9 0 0 1 3.6 0c1.37-.93 1.97-.74 1.97-.74.4 1 .15 1.73.07 1.91.46.5.74 1.15.74 1.93 0 2.77-1.69 3.38-3.3 3.56.26.22.5.66.5 1.33v1.97c0 .2.13.42.5.35A7.2 7.2 0 0 0 8 .8z" fill="currentColor" />
+              </svg>
+              Watch on GitHub
+            </a>
+            <a href="https://github.com/hengfeiyang/DevTables/issues" class="btn-ghost lg">
+              Request a feature
+              <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <aside class="dl-right">
+          <div class="dl-spec">
+            <span class="spec-k">Version</span><span class="spec-v">1.0.1 — June 2026</span>
+            <span class="spec-k">Requires</span><span class="spec-v">macOS 15 Sequoia or later</span>
+            <span class="spec-k">Engines</span><span class="spec-v">PostgreSQL · MySQL · SQLite · OpenObserve</span>
+            <span class="spec-k">Secrets</span><span class="spec-v">macOS Keychain, sandboxed app</span>
+            <span class="spec-k">Telemetry</span><span class="spec-v">None — nothing is collected</span>
+            <span class="spec-k">Distribution</span><span class="spec-v">Mac App Store — coming soon</span>
+          </div>
+          <div class="dl-built">
+            <span>Built with</span>
+            <strong>Claude Code</strong>
+            <span>and Swift</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">
+          <img src="images/icon.png" alt="" width="26" height="26" class="logo-img" />
+          <span>DevTables</span>
+        </a>
+        <p>A keyboard-first database client for macOS.<br />Built by a developer, used every day.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5>Product</h5>
+          <a href="#keyboard">Keyboard</a>
+          <a href="#databases">Databases</a>
+          <a href="#editor">Editor</a>
+          <a href="#features">Index</a>
+          <a href="#download">Download</a>
+        </div>
+        <div>
+          <h5>Resources</h5>
+          <a href="release-notes.html">Changelog</a>
+          <a href="https://github.com/hengfeiyang/DevTables/issues">Support</a>
+          <a href="https://apps.apple.com/app/devutilities/id6753612551">DevUtilities — our other app</a>
+        </div>
+        <div>
+          <h5>Legal</h5>
+          <a href="privacy_policy.html">Privacy policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <span>© 2026 DevTables</span>
+      <span>v1.0.1</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
