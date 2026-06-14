@@ -182,7 +182,13 @@
         </div>`
       ).join('');
       const on = list.querySelector('.pal-item.on');
-      if (on) on.scrollIntoView({ block: 'nearest' });
+      if (on) {
+        // Scroll only within the list, never the page (avoids load-time jump).
+        const top = on.offsetTop;
+        const bottom = top + on.offsetHeight;
+        if (top < list.scrollTop) list.scrollTop = top;
+        else if (bottom > list.scrollTop + list.clientHeight) list.scrollTop = bottom - list.clientHeight;
+      }
       list.querySelectorAll('.pal-item').forEach((el) => {
         el.addEventListener('mousemove', () => {
           const i = Number(el.dataset.i);
